@@ -36,4 +36,34 @@ def shop():
 
     return render_template("shop.html", benefits=benefits)
 
+@bp.route("/redeem_benefit", methods=["GET"])
+@login_required
+def redeem():
+    args = request.args
+    benefit_no = args["benefit"]
+    db = get_db()
+
+    column_name = "benefit" + benefit_no
+    query = "UPDATE user SET {} = 1 WHERE id = {}".format(column_name, g.user["id"])
+    print("Executing:", "UPDATE user SET {} = 1 WHERE id = {}".format(column_name, g.user["id"]))
+    db.execute(
+        query
+    )
+    db.commit()
+
+    benefit = db.execute(
+        "SELECT * FROM benefit WHERE id = ?", (benefit_no,)
+    ).fetchone()
+
+    query = "UPDATE user SET coins = {} WHERE id = {}".format( g.user["coins"]-benefit["price"] , g.user["id"])
+    print("Executing:", "UPDATE user SET {} = 1 WHERE id = {}".format(column_name, g.user["id"]))
+    db.execute(
+        query
+    )
+    db.commit()
+
+    return {
+        "status": "ok"
+    }
+
     

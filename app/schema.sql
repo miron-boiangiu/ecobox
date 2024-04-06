@@ -10,7 +10,13 @@ CREATE TABLE user (
   password TEXT NOT NULL,
   firstname TEXT NOT NULL,
   lastname TEXT NOT NULL,
-  coins INTEGER DEFAULT 0
+  coins INTEGER DEFAULT 0,
+  benefit1 INTEGER DEFAULT 0,
+  benefit2 INTEGER DEFAULT 0,
+  benefit3 INTEGER DEFAULT 0,
+  benefit4 INTEGER DEFAULT 0, 
+  benefit5 INTEGER DEFAULT 0, 
+  benefit6 INTEGER DEFAULT 0 
 );
 
 CREATE TABLE benefit (
@@ -19,7 +25,6 @@ CREATE TABLE benefit (
   name TEXT NOT NULL,
   description TEXT NOT NULL,
   price INTEGER NOT NULL,
-  redeemed INTEGER DEFAULT 0,
   availability TEXT NOT NULL
 );
 
