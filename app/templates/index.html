@@ -12,25 +12,30 @@
 <body class="vh-100" style="padding-top: 8vh; padding-bottom: 10vh;">
 
   <div class="container">
-  <div class="d-flex flex-column my-2 overflow-auto" style="height: 80vh">
+    <div class="d-flex flex-column my-2 overflow-auto" style="height: 80vh">
 
-    <div class="d-flex flex-column my-2 align-items-center">
-      <img src="{{ url_for('static', filename='ecobox.png') }}" alt="Ecobox logo" style="width:100%; max-width:200px;">
+      <div class="d-flex flex-column my-2 align-items-center">
+        <img src="{{ url_for('static', filename='ecobox.png') }}" alt="Ecobox logo" style="width:100%; max-width:200px;">
+      </div>
+
+      <div class="d-grid gap-2 col-6 mx-auto my-3">
+        <a href="/login" class="btn btn-primary btn-success rounded-5" type="button">Login</a>
+        <a href="/register" class="btn btn-primary btn-success rounded-5" type="button">Register</a>
+      </div>
+
     </div>
-
-    <div class="d-grid gap-2 col-6 mx-auto my-3">
-      <a href="/login" class="btn btn-primary btn-success rounded-5" type="button">Login</a>
-      <a href="/register" class="btn btn-primary btn-success rounded-5" type="button">Register</a>
-    </div>
-
   </div>
-</div>
+
 
   <div class="container-fluid position-fixed bottom-0">
+    <p class="text-center text-muted">Powered by:</p>
     <div class="d-flex justify-content-evenly">
-      <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='bcr_logo.jpg') }}" width="50" alt="BCR">
+      <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='bcr.jpg') }}" width="50" alt="BCR">
       <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='ing.jpeg') }}" width="50" alt="ING">
       <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='playtika.png') }}" width="50" alt="Playtika">
+      <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='worldclass.jpg') }}" width="50" alt="World Class">
+      <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='bolt.jpeg') }}" width="50" alt="Bolt">
+      <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='pepandpepper.jpg') }}" width="50" alt="Pep&Pepper">
     </div>
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
       <div class="col-md-4 d-flex align-items-center">

@@ -30,6 +30,11 @@ CREATE TABLE benefit (
 
 INSERT INTO user(email, password, firstname, lastname, coins) VALUES("miron@gmail.com", "scrypt:32768:8:1$m1hWZFgFusHuCmjG$0376b04ae06ef7482b44b01aa14775b25350d5294338975455817037706c8ea7cbfc3e5bbfb6a9f959f588c010fa52deca1598c11ac921e9db9ab3715af8ffa3", "Miron", "Boiangiu", 1200);
 
-INSERT INTO benefit(picture_path, name, description, price, availability) VALUES("pic1.webp", "Abonament metrorex 10 calatorii", "This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 100, "weekly"),
-("pic2.webp", "Cod reducere Decathlon 15%", "This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 0, "indefinitely"),
-("pic3.webp", "Abonament STB 7 zile", "This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 100, "weekly");
+INSERT INTO benefit(picture_path, name, description, price, availability) 
+VALUES
+("shop_metrorex.jpeg", "METROREX 10 rides subscription", "Activate this benefit for 10 free subway rides around Bucharest.", 100, "weekly"),
+("shop_decathlon.jpeg", "Decathlon 10% discount code", "Activate this benefit for 10% discount to hiking products.", 200, "indefinitely"),
+("shop_stb.jpeg", "STB 7 days subscription", "Activate this benefit for 7 days subscription to public transport offered by STB.", 100, "weekly"),
+("shop_trotinete.jpeg", "30km with Bolt electric scooters", "Activate this benefit for 30km with Bolt electric scooters for free", 300, "weekly"),
+("shop_pepandpepper.jpeg", "Pep&Pepper 20% for BIO menus discount code", "Activate this benefit for 20% discount to select menus from Pep&Pepper.", 250, "indefinitely"),
+("shop_worldclass.jpg", "World Class membership 15% discount code", "Activate this benefit for a 15% discount for any Bronze World Class membership.", 400, "monthly");
