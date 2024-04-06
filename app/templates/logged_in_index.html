@@ -1,0 +1,128 @@
+{% extends 'navbar_base.html' %}
+
+{% block content %}
+<div class="my-2 p-3 mx-3 d-flex flex-column align-items-center bg-body-secondary rounded-5">
+    <div class="display-1 text-center my-3">Hello, {{ g.user["firstname"] }}!</div>
+    <div class="display-5 text-center my-3">Since you joined, you helped plant <span class="display-5 text-success text-center">{{ g.user["coins"]//1000 }}</span> trees!</div>
+
+    <button type="button" class="btn btn-success my-3 d-flex flex-column align-items-center w-50 rounded-4">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-recycle w-50 mt-2" viewBox="0 0 16 16">
+        <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.5.5 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244z"/>
+      </svg>
+      <div class="my-2">Press to start recycling!</div> 
+    </button>
+  </div>
+
+  <div class="my-2 p-3 mx-3 d-flex flex-column align-items-center bg-body-white rounded-5">
+    <div class="display-3 my-3">Eco-soldier since <span class="display-3 text-success text-center">april 2024</span></div>
+    <div class="d-block mb-3 w-100">
+      <p>Progress towards planting another tree:</p>
+      <div class="progress position-relative" role="progressbar" aria-label="Progress to next tree" aria-valuenow='{{ ( g.user["coins"] % 1000 ) * 100 // 1000 }}' aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped bg-success overflow-visible" style='width: {{ (g.user["coins"] % 1000) * 100 // 1000  }}%'></div>
+        <p class="position-absolute top-50 start-50 translate-middle">{{ g.user["coins"] % 1000 }}/1000</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-2 p-3 mx-3 d-flex flex-column align-items-center bg-body-secondary rounded-5">
+    <p class="display-5 my-2">Shop suggestions:</p>
+
+    <div id="carouselShopSuggestionsAutoplaying" class="carousel slide w-100" data-bs-ride="carousel">
+      <div class="carousel-inner py-3">
+
+        <div class="carousel-item active">
+          <div class="card w-100">
+            <img src="{{ url_for('static', filename='bcr_logo.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Abonament lunar METROREX</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Redeem</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card w-100">
+            <img src="{{ url_for('static', filename='bcr_logo.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Abonament lunar STB</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Redeem</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card w-100">
+            <img src="{{ url_for('static', filename='bcr_logo.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Abonament lunar WORLD CLASS</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Redeem</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselShopSuggestionsAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselShopSuggestionsAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="my-2 p-3 mx-3 d-flex flex-column align-items-center bg-white rounded-5">
+    <p class="display-3 text-black">Our sponsors:</p>
+
+    <div id="carouselSponsorsAutoplaying" class="carousel slide w-100" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <div class="card border-0 w-100">
+            <img src="{{ url_for('static', filename='bcr_logo.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body bg-white">
+              <p class="card-text text-black text-center display-5">BCR</p>
+              <p class="card-text text-black text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, excepturi debitis magni sint labore suscipit ratione. Ullam, est. Accusantium nam earum excepturi. Aspernatur blanditiis a autem placeat doloribus dicta temporibus!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card border-0 w-100">
+            <img src="{{ url_for('static', filename='ing.jpeg') }}" class="card-img-top" alt="...">
+            <div class="card-body bg-white">
+              <p class="card-text text-black text-center display-5">ING</p>
+              <p class="card-text text-black text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, excepturi debitis magni sint labore suscipit ratione. Ullam, est. Accusantium nam earum excepturi. Aspernatur blanditiis a autem placeat doloribus dicta temporibus!</p>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card border-0 w-100">
+            <img src="{{ url_for('static', filename='playtika.png') }}" class="card-img-top" alt="...">
+            <div class="card-body bg-white">
+              <p class="card-text text-black text-center display-5">Playtika</p>
+              <p class="card-text text-black text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, excepturi debitis magni sint labore suscipit ratione. Ullam, est. Accusantium nam earum excepturi. Aspernatur blanditiis a autem placeat doloribus dicta temporibus!</p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselSponsorsAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselSponsorsAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+  </div>
+{% endblock %}
