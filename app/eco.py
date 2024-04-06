@@ -28,6 +28,12 @@ def index():
 @bp.route("/shop", methods=["GET"])
 @login_required
 def shop():
-    return render_template("shop.html")
+
+    db = get_db()
+    benefits = db.execute(
+        "SELECT * FROM benefit"
+    ).fetchall()
+
+    return render_template("shop.html", benefits=benefits)
 
     

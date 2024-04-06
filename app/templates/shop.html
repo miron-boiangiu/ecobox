@@ -25,62 +25,29 @@
     </div>
       <div class="row justify-content-center">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mb-3 ">
+
+          {% for benefit in benefits %}
           <div class="col">
             <div class="card">
-              <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
+              <img src="{{ url_for('static', filename=benefit['picture_path']) }}" class="card-img-top" alt="Hollywood Sign on The Hill">
               <div class="card-body">
-                <h5 class="card-title">Abonament metrorex 10 calatorii</h5>
+                <h5 class="card-title">{{ benefit["name"] }}</h5>
                 <p class="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to
-                  additional content. This content is a little bit longer.
+                    {{ benefit["description"] }}
                 </p>
                 <div class="d-flex justify-content-between align-items-center mb-0">
                     <div class="input-group">
                     <div class="input-group-text btn btn-primary ">Buy</div>
-                    <div class="input-group-text ">100 points</div>
+                    <div class="input-group-text ">{{ benefit["price"] }} points</div>
                     </div>
-                    <span class="text-muted">weekly</span>
+                    <span class="text-muted">{{ benefit["availability"] }}</span>
                 </div>
                 
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card">
-              <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp" class="card-img-top" alt="Palm Springs Road">
-              <div class="card-body">
-                <h5 class="card-title">Cod reducere Dechatlon 15%</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to
-                  additional content. This content is a little bit longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center mb-0">
-                    <div class="input-group">
-                    <div class="input-group-text btn btn-primary ">Buy</div>
-                    <div class="input-group-text ">100 points</div>
-                    </div>
-                    <span class="text-muted">indefinitely</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp" class="card-img-top" alt="Los Angeles Skyscrapers">
-              <div class="card-body">
-                <h5 class="card-title">Abonament STB 7 zile</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                  additional content.</p>
-                  <div class="d-flex justify-content-between align-items-center mb-0">
-                    <div class="input-group">
-                    <div class="input-group-text btn btn-primary ">Buy</div>
-                    <div class="input-group-text ">100 points</div>
-                    </div>
-                    <span class="text-muted">weekly</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
+
         </div>
       </div>
     </div>

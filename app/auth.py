@@ -79,7 +79,7 @@ def register():
                 error = f"User {email} is already registered."
             else:
                 # Success, go to the login page.
-                return redirect(url_for("eco.login"))
+                return redirect(url_for("auth.login"))
 
         flash(error)
 
