@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Hack</title>
+    <style>
+      #myChart {
+    width: 100%;
+    height: 100%;
+}
+    </style>
+</head>
+<body style = "height: 100vh">
+    <section class="bg-da py-4 py-md-5 d-flex flex-column justify-content-center" style = "height: 100%;">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mb-5">
+              <div class="card border border-light-subtle rounded-3 shadow-sm">
+                <div class="card-body p-3 p-md-4 p-xl-5">
+                  <div class="text-center mb-3">
+                  </div>
+                  <h2 class="text-white fs-6 fw-normal text-center text-secondary mb-4"> <span class="text-warning  h3 p-1 ">My profile</span> </h2>
+                  <form action="#!">
+                    <div class="row gy-2 overflow-hidden">
+                      <div class="col -12">
+                        <div class="input-group mt-4  mb-2">
+                          <div class="input-group-text bi bi-envelope">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                            </svg>
+                          </div>
+                          <input type="text" class="input-group-text form-control" name="mail" id="ail" value="Hardcodedmail">
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="input-group mb-2">
+                          <div class="input-group-text bi bi-envelope">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                            </svg>
+                          </div>
+                          <input type="text" class="input-group-text form-control" name="firstname" id="firstname" value="HardcodedFirstName">
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="input-group mb-2">
+                          <div class="input-group-text bi bi-envelope">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                            </svg>
+                          </div>
+                          <input type="text" class="input-group-text form-control" name="lastname" id="lastname" value="HardcodedLastName">
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="d-grid my-3">
+                          <button class="btn btn-light  btn-lg" type="submit">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-8">
+              <h2 class="text-white fs-6 fw-normal text-center text-secondary mb-5"> <span class="text-warning  h3 p-1 ">History</span> </h2>
+              <div class="chart-container" style="position: relative; height:40vh; width:auto">
+                <canvas id="myChart"></canvas>
+            </div>
+          </div>
+          </div>
+        </div>
+    </section>
+    <script>
+      // Define your chart data
+      const data = {
+    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
+    datasets: [
+        {
+            label: 'Paper (kg)',
+            data: [12, 19, 3, 5, 2, 3],
+            borderColor: 'rgba(255, 255, 255, 1)',
+            backgroundColor: 'rgba(255, 255, 255, 1)'
+        },
+        {
+            label: 'Plastic (kg)',
+            data: [8, 15, 5, 8, 3, 6],
+            borderColor: 'rgba(255, 165, 0, 1)', // Example color for the second line
+            backgroundColor: 'rgba(255, 165, 0, 1)' // Example background color for the second line
+        },
+        {
+            label: 'Glass (kg)',
+            data: [8, 12, 0, 3, 3, 1],
+            borderColor: 'rgba(255, 0, 0, 1)', // Example color for the second line
+            backgroundColor: 'rgba(255, 0, 0, 1)' // Example background color for the second line
+        },
+        {
+            label: 'Metal (kg)',
+            data: [0, 2, 7, 3, 5, 6],
+            borderColor: 'rgba(0, 255, 0, 1)', // Example color for the second line
+            backgroundColor: 'rgba(0, 255, 0, 1)' // Example background color for the second line
+        }
+    ]
+};
+
+      // Define your chart configuration
+      const config = {
+    type: 'line',
+    data: data,
+    options: {
+      // maintainAspectRatio: true,
+      responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: 'rgba(255, 255, 255, 1)' // Set color for scale ticks
+                }
+            },
+
+            x: {
+                beginAtZero: true,
+                ticks: {
+                    color: 'rgba(255, 255, 255, 1)' // Set color for scale ticks
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'rgba(255, 255, 255, 1)' // Set legend label color
+                }
+            }
+        }
+    }
+};
+
+
+      var myChart = new Chart(document.getElementById('myChart'), config);
+      
+  </script>
+</body>
+</html>

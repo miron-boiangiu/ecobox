@@ -36,6 +36,52 @@ def shop():
 
     return render_template("shop.html", benefits=benefits)
 
+@bp.route("/profile", methods=["GET"])
+@login_required
+def profile():
+
+    db = get_db()
+
+    return render_template("profile.html")
+
+@bp.route("/scan", methods=["GET"])
+@login_required
+def scan():
+
+    db = get_db()
+
+    return render_template("scan.html")
+
+@bp.route("/scan2", methods=["GET"])
+@login_required
+def scan2():
+
+    db = get_db()
+
+    materials=["plastic", "metal", "paper", "glass"]
+
+    return render_template("scan2.html", materials=materials)
+
+@bp.route("/add_material", methods=["GET"])
+@login_required
+def material():
+    args = request.args
+    material = args["material"]
+    quantity = args["quantity"]
+    db = get_db()
+
+    new_value = g.user[material] + float(quantity)
+
+    query = "UPDATE user SET {} = {} WHERE id = {}".format(material, new_value, g.user["id"])
+    db.execute(
+        query
+    )
+    db.commit()
+
+    return {
+        "status": "ok"
+    }
+
 @bp.route("/redeem_benefit", methods=["GET"])
 @login_required
 def redeem():

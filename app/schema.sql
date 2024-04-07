@@ -16,7 +16,11 @@ CREATE TABLE user (
   benefit3 INTEGER DEFAULT 0,
   benefit4 INTEGER DEFAULT 0, 
   benefit5 INTEGER DEFAULT 0, 
-  benefit6 INTEGER DEFAULT 0 
+  benefit6 INTEGER DEFAULT 0,
+  glass REAL DEFAULT 0,
+  paper REAL DEFAULT 0,
+  plastic REAL DEFAULT 0,
+  metal REAL DEFAULT 0
 );
 
 CREATE TABLE benefit (

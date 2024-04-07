@@ -1,0 +1,76 @@
+{% extends 'navbar_base.html' %}
+
+{% block content %}
+
+<div class="my-2 p-3 mx-3 d-flex flex-column align-items-center bg-body-secondary rounded-5">
+  <div class="display-1 text-center my-3">Choose material</div>
+
+  {% for material in materials %}
+  <div class="modal fade" id="modal-{{ material }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Recycling {{ material }}</h1>
+        </div>
+        <div class="modal-body">
+          Quantity: <span id="quantity-{{ material }}">2</span>KG
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button onclick="check_and_send_data('{{ material }}')" type="button" class="btn btn-success" data-bs-dismiss="modal">Recycle!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  
+  <div class="row">
+    <div class="col-6">
+      <button href="/scan" onclick="randomise_material_quantity('glass')" type="button" class="btn btn-primary my-3 d-flex flex-column align-items-center rounded-4" data-bs-toggle="modal" data-bs-target="#modal-glass">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-50 mt-2" viewBox="0 0 91 91" id="glass"><path d="M65.232 17.848a1.01 1.01 0 0 0 .032-.107l1.49-4.993a1.125 1.125 0 0 0-1.078-1.446H44.739c-1.464-4.584-5.761-7.914-10.824-7.914-6.266 0-11.363 5.098-11.363 11.363s5.097 11.363 11.363 11.363c.556 0 1.099-.054 1.634-.131L48.053 67.88v12.012l-13.529 5.556a1.125 1.125 0 0 0 .428 2.166h28.454a1.126 1.126 0 0 0 .427-2.166l-13.528-5.556V67.88l14.927-50.032zm-1.064-4.297L63.15 16.96c-.928 1.056-6.014 6.248-13.47 2.522a15.167 15.167 0 0 0-4.884-1.474 11.318 11.318 0 0 0 .416-4.458h18.956zm-21.14 1.199a9.08 9.08 0 0 1-.563 3.125 18.848 18.848 0 0 0-6.597 1.306l-1.68-5.63h8.752c.052.393.088.792.088 1.199zm-6.514 6.6c.701-.291 2.443-.924 4.681-1.141a9.142 9.142 0 0 1-4.104 3.072l-.577-1.931zm-2.599 2.513c-5.025 0-9.113-4.088-9.113-9.113s4.088-9.113 9.113-9.113c3.804 0 7.067 2.345 8.43 5.664h-9.668a1.125 1.125 0 0 0-1.078 1.446L34.9 23.808a9.158 9.158 0 0 1-.985.055zm9.975-3.677c1.531.124 3.164.498 4.784 1.309 2.239 1.12 4.313 1.551 6.182 1.551 2.961 0 5.393-1.085 7.144-2.229L49.178 63.782 37.734 25.438a11.41 11.41 0 0 0 6.156-5.252zm-3.238 65.177l8.525-3.501 8.524 3.501H40.652z"></path><path d="M45.992 44.507c-.21.21-.33.5-.33.8a1.13 1.13 0 001.12 1.12 1.126 1.126 0 00.8-1.92c-.42-.41-1.18-.42-1.59 0zM46.296 43.496c.6-.163.954-.781.79-1.381l-4.323-15.922a1.126 1.126 0 00-2.171.59l4.324 15.922a1.124 1.124 0 001.38.791z"></path></svg>
+        <div class="my-2">Glass</div> 
+      </button>
+    </div>
+    <div class="col-6">
+      <button onclick="randomise_material_quantity('paper')" href="/scan" type="button" class="btn btn-warning my-3 d-flex flex-column align-items-center rounded-4" data-bs-toggle="modal" data-bs-target="#modal-paper">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-50 mt-2"  viewBox="0 0 64 64" id="paper"><path d="M52 64c2.206 0 4-1.794 4-4V4c0-2.206-1.794-4-4-4H26c-1.638 0-3.668.841-4.828 2L10 13.171C8.841 14.33 8 16.36 8 18v42c0 2.206 1.794 4 4 4h40zm0-60v56H12V18h10c2.206 0 4-1.794 4-4V4h26zM22 6.828V14h-7.172L22 6.828z"></path><path d="M32 16h12a2 2 0 0 0 0-4H32a2 2 0 0 0 0 4zM44 22H20a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4zM44 32H20a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4zM44 42H20a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4zM44 52H20a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4z"></path></svg>
+        <div class="my-2">Paper</div> 
+      </button>
+    </div>
+    <div class="col-6">
+      <button onclick="randomise_material_quantity('plastic')" href="/scan" type="button" class="btn btn-success my-3 d-flex flex-column align-items-center rounded-4" data-bs-toggle="modal" data-bs-target="#modal-plastic">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-50 mt-2"  viewBox="0 0 64 64" id="bottle"><path d="m46.59 17.07-5.71-5.44c-.3-.28-.46-.64-.46-1.02V10c0-.25-.04-.5-.1-.74 1.21-.5 2.06-1.61 2.06-2.9V3.51c0-1.76-1.55-3.18-3.46-3.18H24.48c-1.9 0-3.44 1.43-3.44 3.18v2.85c0 1.26.8 2.34 1.95 2.85-.07.26-.11.52-.11.79v.69c0 .34-.15.69-.4.96l-5.24 5.5c-.64.69-.99 1.54-.99 2.39v40.58c0 2.14 2.1 3.88 4.68 3.88h22.15c2.58 0 4.68-1.74 4.68-3.88v-40.5c-.01-.94-.42-1.85-1.17-2.55zM19.05 29.45c3.06-.61 9.13-1.37 12.32.11 1.49.69 3.29.95 5.11.95 3.21 0 6.51-.78 8.46-1.33v3.77c-2.9.89-8.85 2.23-12 .76-4.13-1.92-10.86-.99-13.9-.43v-3.83zm4.79-25.94c0-.49.34-.86.64-.86h14.45c.31 0 .66.37.66.86v2.85c0 .49-.35.86-.66.86H24.48c-.3 0-.64-.37-.64-.86V3.51zm-4.39 15.07 4.8-5.04h5.65c.77 0 1.4-.52 1.4-1.16s-.63-1.16-1.4-1.16h-4.28c.03-.17.05-.35.05-.52V10c0-.16.03-.32.08-.46h11.79c.06.15.08.3.08.46v.6c0 .95.41 1.85 1.16 2.55l5.71 5.44c.3.28.46.64.46 1.02v7.09c-2.81.9-8.97 2.33-12.21.82-4.03-1.88-10.56-1.03-13.69-.47v-7.53c0-.32.15-.67.4-.94zm23.62 43.1H20.93c-1.03 0-1.88-.7-1.88-1.56V35.66c2.98-.61 9.26-1.45 12.53.07 1.49.69 3.29.95 5.12.95 3.1 0 6.28-.72 8.26-1.27v24.72c-.01.85-.85 1.55-1.89 1.55z"></path></svg>
+        <div class="my-2">Plastic</div> 
+      </button>
+    </div>
+    <div class="col-6">
+      <button onclick="randomise_material_quantity('metal')" href="/scan" type="button" class="btn btn-danger my-3 d-flex flex-column align-items-center rounded-4" data-bs-toggle="modal" data-bs-target="#modal-metal">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-50 mt-2" viewBox="0 0 91 91" id="can"><path d="M70.582 18.209l-2.514-5.307a3.944 3.944 0 0 0-3.551-2.248h-6.963l6.895-2.955c.57-.245.834-.906.59-1.478s-.906-.836-1.477-.591l-11.721 5.023H27.34a3.943 3.943 0 0 0-3.551 2.248l-2.503 5.285a2.287 2.287 0 0 0-.236.976c0 .011-.006.02-.006.029l.002.008a.05.05 0 0 0-.002.012v57.728c.006.345.09.688.231.965l2.486 5.25a4.054 4.054 0 0 0 3.644 2.306H64.45c1.551 0 2.98-.905 3.645-2.307l2.475-5.222c.152-.301.236-.644.244-1.028V19.174a2.225 2.225 0 0 0-.232-.965zm-44.758-4.345c.275-.583.87-.96 1.517-.96h37.177c.646 0 1.242.377 1.518.961l2.529 5.347-.016 56.584H23.505c-.074 0-.14.028-.211.043l.015-55.521h41.21a1.125 1.125 0 0 0 0-2.25H23.833l1.991-4.204zM66.063 82.19a1.791 1.791 0 0 1-1.611 1.02H27.406a1.79 1.79 0 0 1-1.61-1.02l-1.96-4.145h44.19l-1.963 4.145z"></path><path d="M45.929 31.726c-9.494 0-17.218 7.725-17.218 17.219 0 9.493 7.724 17.217 17.218 17.217 9.495 0 17.217-7.724 17.217-17.217 0-9.495-7.722-17.219-17.217-17.219zm0 2.25c7.19 0 13.209 5.1 14.641 11.871-.4.457-1.814 1.954-3.912 2.923-3.234 1.494-6.473.972-9.625-1.552-7.339-5.868-13.624-2.32-15.865-.646 1.143-7.128 7.317-12.596 14.761-12.596zm0 29.935c-8.166 0-14.816-6.576-14.955-14.71.324.032.658-.061.906-.309.247-.248 6.153-5.992 13.747.082 2.683 2.147 5.22 2.874 7.423 2.874 1.76 0 3.309-.463 4.551-1.036 1.359-.627 2.463-1.435 3.281-2.14.002.091.014.18.014.271 0 8.254-6.714 14.968-14.967 14.968z"></path></svg>
+        <div class="my-2">Metal</div> 
+      </button>
+    </div>
+
+  </div>
+
+
+  <script>
+    function check_and_send_data(material) {
+      const elem = document.getElementById("quantity-" + material);
+      const quantity = elem.innerHTML;
+
+      fetch("/add_material?material=" + material + "&quantity=" + quantity)
+            .then((json) => console.log(json));
+      }
+
+    function randomise_material_quantity(material) {
+      let val = Math.random() * (5 - 1) + 1;
+      val = val.toFixed(2);
+      
+      const elem = document.getElementById("quantity-" + material);
+
+      elem.innerHTML = val;
+      
+    }
+  </script>
+</div>
+
+{% endblock %}
