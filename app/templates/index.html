@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -7,6 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <title>ecobox</title>
+  <style>
+    body {
+        padding-top: 8vh;
+        padding-bottom: 10vh;
+        background: url({{ url_for('static', filename='background.jpeg') }}) no-repeat center/cover;
+        background-attachment: fixed;
+    }
+  </style>
 </head>
 
 <body class="vh-100" style="padding-top: 8vh; padding-bottom: 10vh;">
@@ -19,8 +27,13 @@
       </div>
 
       <div class="d-grid gap-2 col-6 mx-auto my-3">
-        <a href="/login" class="btn btn-primary btn-success rounded-5" type="button">Login</a>
-        <a href="/register" class="btn btn-primary btn-success rounded-5" type="button">Register</a>
+        <a href="/login" class="btn btn-primary btn-success rounded-5 fw-bold" type="button">Login</a>
+        <a href="/register" class="btn btn-primary btn-success rounded-5 fw-bold" type="button">Register</a>
+      </div>
+
+      <div class="d-flex flex-column my-2 align-items-center">
+        <div class="display-1 fw-bold my-3"> <span class="text-success">Bin</span> to <span class="text-success">Win</span></div>
+        <div class="display-5 fw-bold text-center my-3">making sustainability rewarding</div>
       </div>
 
     </div>
@@ -28,8 +41,8 @@
 
 
   <div class="container-fluid position-fixed bottom-0">
-    <p class="text-center text-muted">Powered by:</p>
-    <div class="d-flex justify-content-evenly">
+    <p class="text-center text-muted fw-bold">Powered by:</p>
+    <div class="d-flex justify-content-evenly mb-4">
       <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='bcr.jpg') }}" width="50" alt="BCR">
       <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='ing.jpeg') }}" width="50" alt="ING">
       <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='playtika.png') }}" width="50" alt="Playtika">
@@ -37,11 +50,6 @@
       <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='bolt.jpeg') }}" width="50" alt="Bolt">
       <img class="rounded-pill bg-white p-1" src="{{ url_for('static', filename='pepandpepper.jpg') }}" width="50" alt="Pep&Pepper">
     </div>
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
-      <div class="col-md-4 d-flex align-items-center">
-        <span class="mb-3 mb-md-0 text-body-secondary">© 2024 ecobox</span>
-      </div>
-    </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

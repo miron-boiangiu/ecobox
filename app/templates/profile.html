@@ -1,4 +1,4 @@
-{% extends 'navbar_base.html' %}
+{% extends 'sticky_footer_navbar_base.html' %}
 
 {% block content %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -6,17 +6,17 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-8 p-3 mb-2">
-            <h2 class="text-white fs-6 fw-normal text-center text-secondary mb-5"> <span class="text-warning  h3 p-1 ">Stats</span> </h2>
-            <div class="chart-container" style="position: relative; height:40vh; width:auto">
+            <h2 class="fs-6 fw-bold text-center text-secondary mb-4"> <span class="text-success h3 p-1 fw-bold">Stats</span> </h2>
+            <div class="chart-container" style="position: relative; height:25vh; width:auto">
               <canvas id="myChart"></canvas>
           </div>
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mb-5">
-          <div class="card border border-light-subtle rounded-3 shadow-sm">
+          <div class="card bg-transparent border-0">
             <div class="card-body p-3 p-md-4 p-xl-5">
               <div class="text-center mb-3">
               </div>
-              <h2 class="text-white fs-6 fw-normal text-center text-secondary mb-4"> <span class="text-warning  h3 p-1 ">Profile</span> </h2>
+              <h2 class="fs-6 fw-bold text-center text-secondary mb-4"> <span class="text-success h3 p-1 fw-bold">Profile</span> </h2>
               <form action="#!">
                 <div class="row gy-2 overflow-hidden">
                   <div class="col -12">
@@ -51,7 +51,7 @@
                   </div>
                   <div class="col-12">
                     <div class="d-grid my-3">
-                      <button class="btn btn-outline-secondary" type="submit">Save changes</button>
+                      <button class="btn bg-light" type="submit">Save changes</button>
                     </div>
                   </div>
                 </div>
@@ -76,8 +76,8 @@ datasets: [
         {% else %}
           data: [0, 0, 0, 0, 0, {{ g.user["paper"] }}],
         {% endif %}
-        borderColor: 'rgba(255, 255, 255, 1)',
-        backgroundColor: 'rgba(255, 255, 255, 1)'
+        borderColor: 'rgba(0, 0, 255, 1)',
+        backgroundColor: 'rgba(0, 0, 255, 1)'
     },
     {
         label: 'Plastic (kg)',
@@ -123,21 +123,21 @@ options: {
         y: {
             beginAtZero: true,
             ticks: {
-                color: 'rgba(255, 255, 255, 1)' // Set color for scale ticks
+                color: 'rgba(0, 0, 0, 1)' // Set color for scale ticks
             }
         },
 
         x: {
             beginAtZero: true,
             ticks: {
-                color: 'rgba(255, 255, 255, 1)' // Set color for scale ticks
+                color: 'rgba(0, 0, 0, 1)' // Set color for scale ticks
             }
         }
     },
     plugins: {
         legend: {
             labels: {
-                color: 'rgba(255, 255, 255, 1)' // Set legend label color
+                color: 'rgba(0, 0, 0, 1)' // Set legend label color
             }
         }
     }

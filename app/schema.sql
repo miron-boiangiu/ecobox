@@ -37,8 +37,8 @@ INSERT INTO user(email, password, firstname, lastname, coins) VALUES("miron@gmai
 INSERT INTO benefit(picture_path, name, description, price, availability) 
 VALUES
 ("shop_metrorex.jpeg", "METROREX 10 rides subscription", "Activate this benefit for 10 free subway rides around Bucharest.", 100, "weekly"),
-("shop_decathlon.jpeg", "Decathlon 10% discount code", "Activate this benefit for 10% discount to hiking products.", 200, "indefinitely"),
+("shop_decathlon.jpeg", "Decathlon 10% discount code", "Activate this benefit for 10% discount to hiking products.", 200, "daily"),
 ("shop_stb.jpeg", "STB 7 days subscription", "Activate this benefit for 7 days subscription to public transport offered by STB.", 100, "weekly"),
 ("shop_trotinete.jpeg", "30km with Bolt electric scooters", "Activate this benefit for 30km with Bolt electric scooters for free", 300, "weekly"),
-("shop_pepandpepper.jpeg", "Pep&Pepper 20% for BIO menus discount code", "Activate this benefit for 20% discount to select menus from Pep&Pepper.", 250, "indefinitely"),
+("shop_pepandpepper.jpeg", "Pep&Pepper 20% for BIO menus discount code", "Activate this benefit for 20% discount to select menus from Pep&Pepper.", 250, "daily"),
 ("shop_worldclass.jpg", "World Class membership 15% discount code", "Activate this benefit for a 15% discount for any Bronze World Class membership.", 400, "monthly");
