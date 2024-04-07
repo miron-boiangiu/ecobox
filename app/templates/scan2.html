@@ -13,10 +13,10 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Recycling {{ material }}</h1>
         </div>
         <div class="modal-body">
-          Quantity: <span id="quantity-{{ material }}">2</span>KG
+          <div class="display-5 text-center">Quantity: <span id="quantity-{{ material }}" class="text-success display-5">2</span>KG</div>
         </div>
         <div class="modal-footer d-flex justify-content-center">
-          <button onclick="check_and_send_data('{{ material }}')" type="button" class="btn btn-success" data-bs-dismiss="modal">Recycle!</button>
+          <button onclick="check_and_send_data('{{ material }}')" id="button-{{ material }}" type="button" class="btn btn-success" data-bs-dismiss="modal">Recycle!</button>
         </div>
       </div>
     </div>
@@ -53,21 +53,46 @@
 
 
   <script>
+    var val_success = false;
+
     function check_and_send_data(material) {
       const elem = document.getElementById("quantity-" + material);
       const quantity = elem.innerHTML;
 
-      fetch("/add_material?material=" + material + "&quantity=" + quantity)
-            .then((json) => console.log(json));
+      if (val_success) {
+        fetch("/add_material?material=" + material + "&quantity=" + quantity)
+              .then((json) => console.log(json));
       }
+    }
 
     function randomise_material_quantity(material) {
       let val = Math.random() * (5 - 1) + 1;
       val = val.toFixed(2);
       
       const elem = document.getElementById("quantity-" + material);
+      const elem_btn = document.getElementById("button-" + material);
 
       elem.innerHTML = val;
+      elem.classList.remove("text-success");
+      elem.classList.remove("text-danger");
+
+      elem_btn.classList.remove("btn-success");
+      elem_btn.classList.remove("btn-danger");
+
+
+      if (val >= 2 && val <= 4) {
+        val_success = true;
+
+        elem.classList.add("text-success");
+        elem_btn.classList.add("btn-success");
+        elem_btn.innerHTML = "Recycle!"
+      } else {
+        val_success = false;
+
+        elem.classList.add("text-danger");
+        elem_btn.classList.add("btn-danger");
+        elem_btn.innerHTML = "Try again!"
+      }
       
     }
   </script>

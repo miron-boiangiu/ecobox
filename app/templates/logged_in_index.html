@@ -36,7 +36,7 @@
             <div class="card-body">
               <h5 class="card-title">METROREX free trips</h5>
               <p class="card-text">Activate this benefit for 10 free subway rides around Bucharest.</p>
-              <a href="#" class="btn btn-primary">Redeem</a>
+              <a href="/shop#benefit-1" class="btn btn-primary">Redeem</a>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@
             <div class="card-body">
               <h5 class="card-title">STB 7-day pass</h5>
               <p class="card-text">Activate this benefit for 7 days subscription to public transport.</p>
-              <a href="#" class="btn btn-primary">Redeem</a>
+              <a href="/shop#benefit-3" class="btn btn-primary">Redeem</a>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
             <div class="card-body">
               <h5 class="card-title">30km with scooters</h5>
               <p class="card-text">Activate this benefit for 30km with Bolt electric scooters for free.</p>
-              <a href="#" class="btn btn-primary">Redeem</a>
+              <a href="/shop#benefit-5" class="btn btn-primary">Redeem</a>
             </div>
           </div>
         </div>
@@ -72,6 +72,22 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
+    </div>
+  </div>
+
+  <div class="my-2 p-3 mx-3 d-flex flex-column align-items-center bg-body-secondary rounded-5">
+    <div class="display-3 my-3 text-center ">Locations <span class="display-3 text-success text-center"></span></div>
+    <div class="input-group mb-3 mt-3 " style="width: auto;">
+      <span type="text" class="form-control ms-5  " aria-label="Text input with dropdown button" style="width: auto;">Select the EcoBox</span>  
+        <select id="start" onchange="updateMap()" class="me-5">
+          <option value="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2848.4546872407363!2d26.05091209559517!3d44.444346969633415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDTCsDI2JzQwLjMiTiAyNsKwMDMnMDcuNiJF!5e0!3m2!1sro!2sro!4v1712451946316!5m2!1sro!2sro">Grozavesti</option>
+          <option value="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2848.4432439218626!2d26.070340747657777!3d44.4445816563411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDTCsDI2JzQwLjUiTiAyNsKwMDQnMjUuNiJF!5e0!3m2!1sro!2sro!4v1712452560506!5m2!1sro!2sro">Gara de Nord</option>
+          <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.3038633099527!2d26.09903757574252!3d44.42692880204689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff167f95b32f%3A0xb85d6aed7d25d34!2zUGlhyJthIFVuaXJpaSwgQnVjdXJlyJl0aQ!5e0!3m2!1sro!2sro!4v1712452516206!5m2!1sro!2sro">Piata Unirii</option>
+          <option value="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2846.451034782135!2d26.109959755843114!3d44.485424197770556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDTCsDI5JzA3LjUiTiAyNsKwMDYnNDMuNyJF!5e0!3m2!1sro!2sro!4v1712452434468!5m2!1sro!2sro">Pipera</option>
+        </select>
+    </div>
+    <div class="container" style="width: auto; height: 100%;">
+      <iframe id="mapFrame" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2848.4546872407363!2d26.05091209559517!3d44.444346969633415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDTCsDI2JzQwLjMiTiAyNsKwMDMnMDcuNiJF!5e0!3m2!1sro!2sro!4v1712451946316!5m2!1sro!2sro" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 
@@ -142,4 +158,11 @@
     </div>
 
   </div>
+
+  <script>
+    function updateMap() {
+      var selectedLocation = document.getElementById('start').value;
+      document.getElementById('mapFrame').src = selectedLocation;
+    }
+  </script>
 {% endblock %}
