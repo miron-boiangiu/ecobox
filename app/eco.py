@@ -1,5 +1,6 @@
 import functools
 
+import math
 from flask import Blueprint
 from flask import flash
 from flask import g
@@ -71,8 +72,15 @@ def material():
     db = get_db()
 
     new_value = g.user[material] + float(quantity)
+    new_coins = g.user["coins"] + int(float(quantity) * 2)
 
     query = "UPDATE user SET {} = {} WHERE id = {}".format(material, new_value, g.user["id"])
+    db.execute(
+        query
+    )
+    db.commit()
+
+    query = "UPDATE user SET coins = {} WHERE id = {}".format( new_coins , g.user["id"])
     db.execute(
         query
     )
